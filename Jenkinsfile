@@ -82,12 +82,7 @@ pipeline {
                         ansiblePlaybook(
                             playbook: 'deploy_app.yml',
                             inventory: 'hosts.ini',
-                            extras: [
-                                "-e ansible_ssh_private_key_file=${sshPrivateKey}",
-                                "-e DOCKER_IMAGE=${DOCKER_IMAGE}",
-                                "-e IMAGE_TAG=${IMAGE_TAG}",
-                                "-e TEST_CONTAINER_NAME=${TEST_CONTAINER_NAME}"
-                            ]
+                            extras: "-e ansible_ssh_private_key_file=${sshPrivateKey} -e DOCKER_IMAGE=${DOCKER_IMAGE} -e IMAGE_TAG=${IMAGE_TAG} -e TEST_CONTAINER_NAME=${TEST_CONTAINER_NAME}"
                         )
                     }
                 }
