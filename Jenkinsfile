@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/DevRico003/ha-jenkins-11-02-24'
+                git url: 'https://github.com/DevRico003/ha-jenkins-11-02-24.git'
             }
         }
 
