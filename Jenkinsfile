@@ -75,7 +75,7 @@ pipeline {
             }
         }
 
-        stage('Deploy to Test Server') {
+        stage('Deploy to Test Server with Ansible') {
             steps {
                 script {
                     withCredentials([sshUserPrivateKey(credentialsId: 'ssh-key', keyFileVariable: 'sshPrivateKey')]) {
