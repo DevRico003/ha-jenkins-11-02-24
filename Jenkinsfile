@@ -37,7 +37,6 @@ pipeline {
 
         stage('Code Quality Analysis') {
             steps {
-                sh 'pip install pylint'
                 sh 'pylint app.py'
             }
         }
