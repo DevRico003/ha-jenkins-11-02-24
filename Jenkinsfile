@@ -62,7 +62,6 @@ pipeline {
             steps {
                 script {
                     withCredentials([sshUserPrivateKey(credentialsId: 'ssh-key', keyFileVariable: 'sshPrivateKey')]) {
-                        // Ausführen des Ansible-Playbooks mit dem SSH-Schlüssel
                         ansiblePlaybook(
                             playbook: 'deploy_app.yml',
                             inventory: 'hosts.ini',
