@@ -10,12 +10,13 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git url: 'https://github.com/DevRico003/ha-jenkins-11-02-24.git'
-                branch: 'main'
-            }
-        }
+        stage('Clone repository') {
+                    steps {
+                        echo 'Start: Cloning repository...'
+                        checkout scm: [$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[credentialsId: 'github-id', url: 'https://github.com/DevRico003/ha-jenkins-11-02-24.git']]]
+                        echo 'End: Repository cloned.'
+                    }
+                }
 
         stage('Setup Virtual Environment') {
             steps {
