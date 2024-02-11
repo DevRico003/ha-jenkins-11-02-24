@@ -1,5 +1,5 @@
 - name: Deploy Docker Container
-  hosts: all
+  hosts: testserver
   become: yes
 
   tasks:
