@@ -46,10 +46,16 @@ pipeline {
 
         stage('Code Quality Analysis') {
             steps {
-                sh '''
-                . venv/bin/activate
-                pylint app.py
-                '''
+                sh script: '''
+                    . venv/bin/activate
+                    pylint app.py
+                    result=$?
+                    if [ "$result" -eq 1 ]; then
+                        echo "Pylint found errors that prevent the pipeline from continuing."
+                        exit 1
+                    fi
+                    ''', returnStatus: true
+
             }
         }
 
