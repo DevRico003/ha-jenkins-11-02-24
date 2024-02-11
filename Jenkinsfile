@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'ec2-agent'}
 
     environment {
         DOCKER_IMAGE = 'devrico003/ha-jenkins-11-02-24'
