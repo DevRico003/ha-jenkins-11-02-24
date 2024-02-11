@@ -46,7 +46,10 @@ pipeline {
 
         stage('Code Quality Analysis') {
             steps {
-                sh 'pylint app.py'
+                sh '''
+                . venv/bin/activate
+                pylint app.py
+                '''
             }
         }
 
