@@ -1,0 +1,24 @@
+- name: Deploy Docker Container
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Remove existing container
+      docker_container:
+        name: "{{ TEST_CONTAINER_NAME }}"
+        state: absent
+
+    - name: Pull the latest Docker image
+      docker_image:
+        name: "{{ DOCKER_IMAGE }}"
+        tag: "{{ IMAGE_TAG }}"
+        source: pull
+
+    - name: Start new Docker container
+      docker_container:
+        name: "{{ TEST_CONTAINER_NAME }}"
+        image: "{{ DOCKER_IMAGE }}:{{ IMAGE_TAG }}"
+        state: started
+        published_ports:
+          - "8080:8080"
+        restart_policy: always
